@@ -1,15 +1,6 @@
--- Sscript that creates the table force_name on your MySQL server.
-
--- Create database
-CREATE DATABASE IF NOT EXISTS `hbtn_0d_2`;
-
--- Create user and set password
-CREATE USER IF NOT EXISTS 'user_0d_2' @'localhost' IDENTIFIED BY 'user_0d_2_pwd';
-
--- Give user_0d_2 SELECT privilege in the database hbtn_0d_2
-GRANT 
-SELECT 
-  ON `hbtn_0d_2`.* TO 'user_0d_2' @'localhost';
-
--- For changes to take effect immediatelY
+-- Creates a MySQL Server user `user_0d_1`
+-- and sets a temporary password `user_0d_1_pwd`.
+DROP USER IF EXISTS 'user_0d_1'@'localhost';
+CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost' IDENTIFIED BY 'user_0d_1_pwd';
+GRANT ALL PRIVILEGES ON * . * TO 'user_0d_1'@'localhost';
 FLUSH PRIVILEGES;
