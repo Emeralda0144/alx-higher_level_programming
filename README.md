@@ -35,7 +35,7 @@ Here is the complete list of projects in this repository, each project has its d
 * [0x07-python-test_driven_development](./0x07-python-test_driven_development)
 * [0x08-python-more_classes](./0x08-python-more_classes)
 
-## Author :
+## Author
 
 * **Onyinyechi Peace** <[Emeralda](https://github.com/Emeralda0144)>
 
