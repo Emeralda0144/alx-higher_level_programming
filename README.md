@@ -4,8 +4,8 @@ This repository stores my solutions to the amazing high-level programming projec
 ---
 
 <p align="center">
-<a target="_blank" href="https://www.alxafrica.com/
-"><img src="img src="https://github.com/Emeralda0144/alx-higher_level_programming/blob/master/holby.jpg?raw=true"></a>
+<a target="_blank" href="https://www.alxafrica.com/"></a>
+<img src="http://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png" alt="ALX Afroca Logo">
 </p>
 
 ---
