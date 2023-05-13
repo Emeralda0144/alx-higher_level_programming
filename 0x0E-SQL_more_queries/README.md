@@ -1,20 +1,140 @@
-# SQL More Queries
+# 0x0E. SQL More Queries
+
+`SQL`  `MySQL`
+
+![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/66988091.jpg)
+
+## Resources
+**Read or watch:**
+
+* [How To Create a New User and Grant Permissions in MySQL](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+* [How To Use MySQL GRANT Statement To Grant Privileges To a User](https://www.mysqltutorial.org/mysql-grant.aspx)
+* [MySQL constraints](https://zetcode.com/mysql/constraints/)
+* [SQL technique: subqueries](https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/subqueries.php)
+* [Basic query operation: the join](https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/join.php)
+* [SQL technique: multiple joins and the distinct keyword](https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/multijoin.php)
+* [SQL technique: join types](https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/jointypes.php)
+* [SQL technique: union and minus](https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/setops.php)
+* [MySQL Cheat Sheet](https://intellipaat.com/mediaFiles/2019/02/SQL-Commands-Cheat-Sheet.pdf?US)
+* [The Seven Types of SQL Joins](https://tableplus.com/blog/2018/09/a-beginners-guide-to-seven-types-of-sql-joins.html)
+* [MySQL Tutorial](https://www.youtube.com/watch?v=yPu6qV5byu4)
+* [SQL Style Guide](https://www.sqlstyle.guide/)
+* [MySQL 8.0 SQL Statement Syntax](https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html)
+
+Extra resources around relational database model design:
+
+* [Design](https://www.guru99.com/database-design.html)
+* [Normalization](https://www.guru99.com/database-normalization.html)
+* [ER Modeling](https://www.guru99.com/er-modeling.html)
 
 # Learning Objectives
 
 * How to create a new MySQL user
 * How to manage privileges for a user to a database or table
-* What’s a PRIMARY KEY
-* What’s a FOREIGN KEY
-* How to use NOT NULL and UNIQUE constraints
+* What’s a `PRIMARY KEY`
+* What’s a `FOREIGN KEY`
+* How to use `NOT NULL` and `UNIQUE` constraints
 * How to retrieve datas from multiple tables in one request
 * What are subqueries
-* What are JOIN and UNION
+* What are `JOIN` and `UNION`
 
-# Tasks
+## Requirements
 
-## My privileges!
+### General
+* Allowed editors: `vi`, `vim`, `emacs`
+* All your files will be executed on Ubuntu 20.04 LTS using `MySQL 8.0` (version 8.0.25)
+* All your files should end with a new line
+* All your SQL queries should have a comment just before (i.e. syntax above)
+* All your files should start by a comment describing the task
+* All SQL keywords should be in uppercase (`SELECT`, `WHERE`…)
+* A `README.md` file, at the root of the folder of the project, is mandatory
+* The length of your files will be tested using `wc`
 
+## More Info
+
+### Comments for your SQL file:
+```
+$ cat my_script.sql
+-- 3 first students in the Batch ID=3
+-- because Batch 3 is the best!
+SELECT id, name FROM students WHERE batch_id = 3 ORDER BY created_at DESC LIMIT 3;
+$
+```
+### Install MySQL 8.0 on Ubuntu 20.04 LTS
+```
+$ sudo apt update
+$ sudo apt install mysql-server
+...
+$ mysql --version
+mysql  Ver 8.0.25-0ubuntu0.20.04.1 for Linux on x86_64 ((Ubuntu))
+$
+```
+Connect to your MySQL server:
+
+```
+$ sudo mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.25-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+mysql> quit
+Bye
+$
+```
+### Use “container-on-demand” to run MySQL
+**In the container, credentials are `root/root`**
+
+* Ask for container `Ubuntu 20.04`
+* Connect via SSH
+* OR connect via the Web terminal
+* In the container, you should start MySQL before playing with it:
+```
+$ service mysql start                                                   
+ * Starting MySQL database server mysqld 
+$
+$ cat 0-list_databases.sql | mysql -uroot -p                               
+Database                                                                                   
+information_schema                                                                         
+mysql                                                                                      
+performance_schema                                                                         
+sys                      
+$
+```
+**In the container, credentials are `root/root`**
+
+### How to import a SQL dump
+```
+$ echo "CREATE DATABASE hbtn_0d_tvshows;" | mysql -uroot -p
+Enter password: 
+$ curl "https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql" -s | mysql -uroot -p hbtn_0d_tvshows
+Enter password: 
+$ echo "SELECT * FROM tv_genres" | mysql -uroot -p hbtn_0d_tvshows
+Enter password: 
+id  name
+1   Drama
+2   Mystery
+3   Adventure
+4   Fantasy
+5   Comedy
+6   Crime
+7   Suspense
+8   Thriller
+$
+```
+![](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/medias/2020/3/bc2575fee3303b731031.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230513%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230513T201431Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=149260677c52ae33cc902bb94dc4a47b31c1884a36820e4969d9dbb42f69f31d)
+
+## Tasks
+
+### 0.My privileges!
 Write a script that lists all privileges of the MySQL users `user_0d_1` and `user_0d_2` on your server (in `localhost`).
 
 **Solution:** [0-privileges.sql](https://github.com/Emeralda0144/alx-higher_level_programming/blob/master/0x0E-SQL_more_queries/0-privileges.sql)
@@ -36,8 +156,7 @@ ERROR 1141 (42000) at line 4: There is no such grant defined for user 'user_0d_2
 $ guillaume@ubuntu:~/$
 ```
 
-## Root user
-
+### 1.Root user
 Write a script that creates the MySQL server user `user_0d_1`.
 
 * `user_0d_1` should have all privileges on your MySQL server
@@ -57,8 +176,7 @@ ERROR 1141 (42000) at line 4: There is no such grant defined for user 'user_0d_2
 $ guillaume@ubuntu:~/$
 ```
 
-## Read user
-
+### 2.Read user
 Write a script that creates the database `hbtn_0d_2` and the user `user_0d_2`.
 
 * `user_0d_2` should have only SELECT privilege in the database `hbtn_0d_2`
@@ -81,8 +199,7 @@ GRANT SELECT ON `hbtn_0d_2`.* TO 'user_0d_2'@'localhost'
 $ guillaume@ubuntu:~/$
 ```
 
-## Always a name
-
+### 3. Always a name
 Write a script that creates the table `force_name` on your MySQL server.
 
 * `force_name` description:
@@ -112,8 +229,7 @@ id  name
 $ guillaume@ubuntu:~/$ 
 ```
 
-## ID can't be null
-
+### 4. ID can't be null
 Write a script that creates the table `id_not_null` on your MySQL server.
 
 * `id_not_null` description:
@@ -143,8 +259,7 @@ id  name
 $ guillaume@ubuntu:~/$
 ```
 
-## Unique ID
-
+### 5. Unique ID
 Write a script that creates the table `unique_id` on your MySQL server.
 
 * `unique_id` description:
@@ -174,8 +289,7 @@ id  name
 $ guillaume@ubuntu:~/$
 ```
 
-## States table
-
+### 6. States table
 Write a script that creates the database `hbtn_0d_usa` and the table `states` (in the database `hbtn_0d_usa`) on your MySQL server.
 
 * `states` description:
@@ -200,8 +314,7 @@ id  name
 $ guillaume@ubuntu:~/$
 ```
 
-## Cities table
-
+### 7. Cities table
 Write a script that creates the database `hbtn_0d_usa` and the table `cities` (in the database `hbtn_0d_usa`) on your MySQL server.
 
 * `cities` description:
@@ -232,8 +345,7 @@ id  state_id    name
 $ guillaume@ubuntu:~/$
 ```
 
-## Cities of California
-
+### 8. Cities of California
 Write a script that lists all the cities of California that can be found in the database `hbtn_0d_usa`.
 
 * The `states` table contains only one record where `name` = `California` (but the `id` can be different, as per the example)
@@ -268,8 +380,7 @@ id  name
 $ guillaume@ubuntu:~/$
 ```
 
-## Cities by States
-
+### 9. Cities by States
 Write a script that lists all cities contained in the database `hbtn_0d_usa`.
 
 * Each record should display: `cities.id` - `cities.name` - `states.name`
@@ -308,8 +419,7 @@ id  name    name
 $ guillaume@ubuntu:~/$
 ```
 
-## Genre ID by show
-
+### 10. Genre ID by show
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql)
 
 Write a script that lists all shows contained in `hbtn_0d_tvshows` that have at least one genre linked.
@@ -347,8 +457,7 @@ The Last Man on Earth   5
 $ guillaume@ubuntu:~/$
 ```
 
-## Genre ID for all shows
-
+### 11. Genre ID for all shows
 Import the database dump of `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `10-genre_id_by_show.sql`)
 
 Write a script that lists all shows contained in the database `hbtn_0d_tvshows`.
@@ -389,8 +498,7 @@ The Last Man on Earth   5
 $ guillaume@ubuntu:~/$
 ```
 
-## No genre
-
+### 12. No genre
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `11-genre_id_all_shows.sql`)
 
 Write a script that lists all shows contained in `hbtn_0d_tvshows` without a genre linked.
@@ -411,8 +519,7 @@ Homeland    NULL
 $ guillaume@ubuntu:~/$
 ```
 
-## Number of shows by genre
-
+### 13. Number of shows by genre
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `12-no_genre.sql`)
 
 Write a script that lists all genres from `hbtn_0d_tvshows` and displays the number of shows linked to each.
@@ -442,8 +549,7 @@ Fantasy 1
 $ guillaume@ubuntu:~/$
 ```
 
-## My genres
-
+### 14.My genres
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: download (same as `13-count_shows_by_genre.sql`)
 
 Write a script that uses the `hbtn_0d_tvshows` database to lists all genres of the show `Dexter`.
@@ -468,8 +574,7 @@ Thriller
 $ guillaume@ubuntu:~/$
 ```
 
-## Only Comedy
-
+### 15. Only Comedy
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `14-my_genres.sql`)
 
 Write a script that lists all Comedy shows in the database `hbtn_0d_tvshows`.
@@ -493,8 +598,7 @@ The Last Man on Earth
 $ guillaume@ubuntu:~/$
 ```
 
-## List shows and genres
-
+### 16. List shows and genres
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `15-comedy_only.sql`)
 
 Write a script that lists all shows, and all genres linked to that show, from the database `hbtn_0d_tvshows`.
@@ -535,8 +639,7 @@ The Last Man on Earth   Drama
 $ guillaume@ubuntu:~/$
 ```
 
-## Not my genre
-
+### 17. Not my genre
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: download (same as `16-shows_by_genre.sql`)
 
 Write a script that uses the `hbtn_0d_tvshows` database to list all genres not linked to the show Dexter
@@ -559,8 +662,7 @@ Fantasy
 $ guillaume@ubuntu:~/$
 ```
 
-## No Comedy tonight!
-
+### 18. No Comedy tonight!
 Import the database dump from `hbtn_0d_tvshows` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql) (same as `100-not_my_genres.sql`)
 
 Write a script that lists all shows without the genre `Comedy` in the database `hbtn_0d_tvshows`.
@@ -584,4 +686,54 @@ Game of Thrones
 Homeland
 House
 $ guillaume@ubuntu:~/$
+```
+
+### 19. Rotten tomatoes
+Import the database `hbtn_0d_tvshows_rate` dump to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows_rate.sql)
+
+Write a script that lists all shows from `hbtn_0d_tvshows_rate` by their rating.
+
+* Each record should display: `tv_shows.title - rating sum`
+* Results must be sorted in descending order by the rating
+* You can use only one `SELECT` statement
+* The database name will be passed as an argument of the ``mysql` command
+```
+guillaume@ubuntu:~/$ cat 102-rating_shows.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
+Enter password: 
+title   rating
+Better Call Saul    163
+Homeland    145
+Silicon Valley  82
+Game of Thrones 79
+Dexter  24
+House   21
+Breaking Bad    16
+The Last Man on Earth   10
+The Big Bang Theory 0
+New Girl    0
+guillaume@ubuntu:~/$ 
+```
+
+### 20. Best genre
+Import the database dump from `hbtn_0d_tvshows_rate` to your MySQL server: [download](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows_rate.sql) (same as `102-rating_shows.sql`)
+
+Write a script that lists all genres in the database `hbtn_0d_tvshows_rate` by their rating.
+
+* Each record should display: `tv_genres.name - rating sum`
+* Results must be sorted in descending order by their rating
+* You can use only one `SELECT` statement
+* The database name will be passed as an argument of the `mysql` command
+```
+guillaume@ubuntu:~/$ cat 103-rating_genres.sql | mysql -hlocalhost -uroot -p hbtn_0d_tvshows_rate
+Enter password: 
+name    rating
+Drama   150
+Comedy  92
+Adventure   79
+Fantasy 79
+Mystery 45
+Crime   40
+Suspense    40
+Thriller    40
+guillaume@ubuntu:~/$ 
 ```
