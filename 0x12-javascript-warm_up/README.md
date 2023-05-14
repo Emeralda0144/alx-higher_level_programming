@@ -13,24 +13,25 @@ For the moment, and for learning all basic concepts of this language, we will do
 ![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/303/Javascript-535.png.jpeg)
 
 ## Resources
-Read or watch:
+**Read or watch:**
 
-Writing JavaScript Code
-Variables
-Data Types
-Operators
-Operator Precedence
-Controlling Program Flow
-Functions
-Objects and Arrays
-Intrinsic Objects
-Module patterns
-var, let and const
-JavaScript Tutorial
-Modern JS]()
+* Writing JavaScript Code
+* Variables
+* Data Types
+* Operators
+* Operator Precedence
+* Controlling Program Flow
+* Functions
+* Objects and Arrays
+* Intrinsic Objects
+* Module patterns
+* var, let and const
+* JavaScript Tutorial
+* Modern JS]()
 
 # Learning Objectives
 
+* Why JavaScript programming is amazing
 * How to run a Javascript script
 * How to create variables and constants
 * What are differences between `var`, `const` and `let`
@@ -47,10 +48,34 @@ Modern JS]()
 * How to manipulate dictionary
 * How to import a file
 
-# Tasks
+## Requirements
 
-## First constant, first print
+### General
+* Allowed editors: `vi`, `vim`, `emacs`
+* All your files will be interpreted on Ubuntu 20.04 LTS using `node` (version 14.x)
+* All your files should end with a new line
+* The first line of all your files should be exactly `#!/usr/bin/node`
+* A `README.md` file, at the root of the folder of the project, is mandatory
+* Your code should be `semistandard` compliant (version 16.x.x). [Rules of Standard]() + [semicolons on top](https://github.com/standard/semistandard). Also as reference: [AirBnB style](https://github.com/airbnb/javascript)
+* All your files must be executable
+* The length of your files will be tested using `wc`
 
+## More Info
+
+### Install Node 14
+```
+$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+```
+### Install semi-standard
+[Documentation](https://intranet.alxswe.com/rltoken/35q5Pc6A6KWPyd3kGeRQFg)
+```
+$ sudo npm install semistandard --global
+```
+
+## Tasks
+
+### 0. First constant, first print
 Write a script that prints “Javascript is amazing”:
 
 * You must create a constant variable called `myVar` with the value “Javascript is amazing”
@@ -67,8 +92,7 @@ $ guillaume@ubuntu:~/0x12$ semistandard ./0-javascript_is_amazing.js
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## 3 languages
-
+### 1. 3 languages
 Write a script that prints 3 lines:
 
 * The first line: “C is fun”
@@ -87,8 +111,7 @@ Javascript is amazing
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Arguments
-
+## 2. Arguments
 Write a script that prints a message depending of the number of arguments passed:
 
 * If no arguments are passed to the script, print “No argument”
@@ -109,8 +132,7 @@ Arguments found
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Value of my argument
-
+## 3. Value of my argument
 Write a script that prints the first argument passed to it:
 
 * If no arguments are passed to the script, print “No argument”
@@ -128,8 +150,7 @@ Holberton
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Create a sentence
-
+### 4. Create a sentence
 Write a script that prints two arguments passed to it, in the following format: “ is ”
 
 * You must use `console.log(...)` to print all output
@@ -147,8 +168,7 @@ undefined is undefined
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## An Integer
-
+### 5. An Integer
 Write a script that prints `My number: <first argument converted in integer>` if the first argument can be converted to an integer:
 
 * If the argument can’t be converted to an integer, print “Not a number”
@@ -172,8 +192,7 @@ Not a number
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Loop to languages
-
+### 6. Loop to languages
 Write a script that prints 3 lines: (like `1-multi_languages.js`) but by using an array of string and a loop
 
 * The first line: “C is fun”
@@ -195,8 +214,7 @@ Javascript is amazing
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## I love C
-
+### 7. I love C
 Write a script that prints `x` times “C is fun”
 
 * Where `x` is the first argument of the script
@@ -224,8 +242,7 @@ $ guillaume@ubuntu:~/0x12$ ./7-multi_c.js -3
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Square
-
+### 8. Square
 Write a script that prints a square
 
 * The first argument is the size of the square
@@ -256,8 +273,7 @@ $ guillaume@ubuntu:~/0x12$ ./8-square.js -3
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Add
-
+### 9. Add
 Write a script that prints the addition of 2 integers
 
 * The first argument is the first integer
@@ -280,8 +296,7 @@ $ guillaume@ubuntu:~/0x12$ ./9-add.js 13 89
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Factorial
-
+### 10. Factorial
 Write a script that computes and prints a factorial
 
 * The first argument is integer (argument can be cast as integer) used for computing the factorial
@@ -305,8 +320,7 @@ Infinity
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Second biggest!
-
+## 11. Second biggest!
 Write a script that searches the second biggest integer in the list of arguments.
 
 * You can assume all arguments can be converted to integer
@@ -327,8 +341,7 @@ $ guillaume@ubuntu:~/0x12$ ./11-second_biggest.js 4 2 5 3 0 -3
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Object
-
+### 12. Object
 Update this script to replace the value `12` with `89`:
 
 * You are not allowed to use `var`
@@ -354,8 +367,7 @@ $ guillaume@ubuntu:~/0x12$ ./12-object.js
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Add file
-
+### 13. Add file
 Write a function that returns the addition of 2 integers.
 
 * The function must be visible from outside
@@ -374,8 +386,7 @@ $ guillaume@ubuntu:~/0x12$ ./13-main.js
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Const or not const
-
+### 14. Const or not const
 Write a file that modifies the value of `myVar` to `333`
 
 **Solution:** [100-let_me_const.js](https://github.com/Emeralda0144/alx-higher_level_programming/blob/master/0x12-javascript-warm_up/100-let_me_const.js)
@@ -391,8 +402,7 @@ $ guillaume@ubuntu:~/0x12$ ./100-main.js
 $ guillaume@ubuntu:~/0x12$
 ```
 
-## Call me Moby
-
+### 15. Call me Moby
 Write a function that executes `x` times a function.
 
 * The function must be visible from outside
@@ -415,8 +425,7 @@ C is fun
 $ guillaume@ubuntu:~/0x12$ 
 ```
 
-## Add me maybe
-
+### 16. Add me maybe
 Write a function that increments and calls a function.
 
 * The function must be visible from outside
@@ -437,8 +446,7 @@ New value: 5
 $ guillaume@ubuntu:~/0x12$ 
 ```
 
-## Increment object
-
+### 17. Increment object
 Update this script by adding a new function `incr` that increments the integer `value`.
 
 * You are not allowed to use `var`
